@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PolterBoo's Applications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+
+    #dropdown1 {
+      margin-top: 275px; /* Adjust the number as needed */
+    }
+
+    #dropdown2 {
+      margin-top: 75px; /* Adjust the number as needed */
+    }
+
+    /* Container to stack the menus */
+    .dropdown-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      background-color: transparent;
+      color: black;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+
+    .dropdown-content {
+      left: 10px;
+      display: none;
+      position: absolute;
+      min-width: 160px;
+      background-color: transparent;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      background-color: transparent;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: transparent;
+      color: gray;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+
+    .dropdown.open .arrow {
+      transform: rotate(180deg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div style="position: absolute; top: 150px; left: 20px;">
+    <button onclick="location.href='index.html'" style="background: none; border: none; color: black; font: inherit; cursor: pointer;">
+      Home
+</button>
+  </div>
+
+  <h1>PolterBoo's Homebrew Applications</h1>
+
+  <div class="dropdown-container">
+    <!-- First dropdown -->
+    <div class="dropdown" id="dropdown1">
+      <button class="dropbtn" onclick="toggleDropdown('dropdown1')">
+        Nintendo 3DS Applications <span class="arrow">▲</span>
+      </button>
+      <div class="dropdown-content">
+        <a href="downloads/greenscreen.3dsx" download>Greenscreen</a>
+        <a href="#">Coming Soon</a>
+      </div>
+        <style>
+          .download-btn {
+            background: transparent;
+            border: none;
+            color: black; /* or any text color you want */
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px 16px;
+          }
+          .download-btn:hover {
+            color: gray; /* optional hover effect */
+          }
+        </style>
+      </div>
+    </div>
+
+    <!-- Second dropdown under first -->
+    <div class="dropdown" id="dropdown2">
+      <button class="dropbtn" onclick="toggleDropdown('dropdown2')">
+        Coming Soon <span class="arrow">▲</span>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Coming Soon</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdown(id) {
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown').forEach(el => {
+        if (el.id !== id) el.classList.remove('open');
+      });
+      // Toggle selected dropdown
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle("open");
+    }
+
+    // Close dropdowns when clicking outside
+    window.addEventListener("click", function (e) {
+      if (!e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown").forEach(el => el.classList.remove("open"));
+      }
+    });
+  </script>
+
+</body>
+</html>
